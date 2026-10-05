@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pecah Masalah! Game Dekomposisi</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#1b1740;--bg2:#2b2466;--ink:#fff8ec;--yel:#ffd23f;--red:#ff6b6b;--teal:#2ec4b6;--pur:#9b7bff;--card:#fff8ec;--dark:#1b1740}
+*{box-sizing:border-box;margin:0}
+html,body{min-height:100%}
+body{font-family:'Baloo 2','Trebuchet MS',system-ui,sans-serif;color:var(--ink);background:radial-gradient(circle at 20% 0,var(--bg2),var(--bg) 60%) fixed;overflow-x:hidden}
+.blob{position:fixed;border-radius:50%;filter:blur(2px);opacity:.25;z-index:0;animation:float 9s ease-in-out infinite}
+.b1{width:220px;height:220px;background:var(--teal);top:-60px;right:-40px}
+.b2{width:160px;height:160px;background:var(--red);bottom:8%;left:-50px;animation-delay:-3s}
+.b3{width:110px;height:110px;background:var(--yel);top:45%;right:6%;animation-delay:-6s}
+@keyframes float{50%{transform:translateY(-28px) rotate(8deg)}}
+main{position:relative;z-index:1;max-width:980px;margin:0 auto;padding:18px}
+.screen{display:none}.screen.on{display:block;animation:in .35s ease}
+@keyframes in{from{opacity:0;transform:translateY(10px)}}
+button{font:inherit;cursor:pointer;border:0}
+.btn{background:var(--yel);color:var(--dark);font-weight:800;font-size:1.2rem;padding:12px 28px;border-radius:999px;box-shadow:0 5px 0 #c99a00;transition:transform .1s,box-shadow .1s}
+.btn:hover{transform:translateY(-2px)}.btn:active{transform:translateY(4px);box-shadow:0 1px 0 #c99a00}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px #fff6;font-size:1rem;padding:8px 18px}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+
+/* home */
+#home{text-align:center;padding-top:7vh}
+#home h1{font-size:clamp(2.6rem,9vw,5rem);font-weight:800;line-height:1}
+.split{display:inline-flex;gap:6px;margin:26px 0 8px}
+.split i{font-style:normal;font-size:clamp(2.5rem,10vw,4.5rem);display:block;animation:apart 3.4s ease-in-out infinite}
+.split i:nth-child(1){--x:-26px;--r:-12deg}.split i:nth-child(2){--x:0;--r:0deg;animation-delay:.15s}.split i:nth-child(3){--x:26px;--r:12deg;animation-delay:.3s}
+@keyframes apart{0%,25%{transform:none}50%,75%{transform:translate(var(--x),-16px) rotate(var(--r))}100%{transform:none}}
+#home p{max-width:520px;margin:10px auto 26px;font-size:1.15rem;opacity:.9}
+
+/* map */
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.top h2{font-size:1.6rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+.lv{background:var(--card);color:var(--dark);border-radius:20px;padding:14px 10px;text-align:center;box-shadow:0 5px 0 #0004;transition:transform .15s;position:relative}
+.lv:hover:not(:disabled){transform:translateY(-5px) rotate(-1.5deg)}
+.lv .em{font-size:2.4rem;display:block}.lv b{display:block;font-size:.95rem;line-height:1.15;margin-top:2px}
+.lv small{display:block;font-weight:700;color:#6b5fa8;font-size:.8rem}
+.lv .st{letter-spacing:2px;color:#e0a800;font-size:1.1rem}
+.lv:disabled{opacity:.45;cursor:not-allowed}
+.lv.next{animation:pulse 1.6s infinite}
+@keyframes pulse{50%{box-shadow:0 5px 0 #0004,0 0 0 8px #ffd23f66}}
+
+/* game */
+.hearts{font-size:1.5rem;letter-spacing:3px}
+.problem{background:var(--card);color:var(--dark);border-radius:24px;padding:16px 20px;display:flex;gap:16px;align-items:center;box-shadow:0 6px 0 #0004;margin-bottom:16px}
+.problem .em{font-size:3.2rem;animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-6px) rotate(-5deg)}}
+.problem small{color:#6b5fa8;font-weight:700}.problem h3{font-size:1.45rem;line-height:1.1}
+.hint{text-align:center;margin:4px 0 12px;opacity:.85}
+.buckets{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.bk{border:3px dashed #fff7;border-radius:20px;padding:10px;min-height:150px;background:#ffffff0d;color:var(--ink);text-align:left;transition:.2s}
+.bk h4{font-size:1.05rem;color:var(--yel);margin-bottom:6px}
+.bk.hot{border-color:var(--yel);background:#ffd23f22;transform:scale(1.02)}
+.bk.bad{animation:shake .4s;border-color:var(--red)}
+.chip{display:block;background:var(--teal);color:var(--dark);font-weight:700;padding:6px 10px;border-radius:12px;margin-top:6px;font-size:.92rem;line-height:1.15;animation:pop .45s cubic-bezier(.3,1.8,.5,1)}
+@keyframes pop{from{transform:scale(0) rotate(-10deg)}}
+.pool{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:18px;min-height:60px}
+.card{background:var(--card);color:var(--dark);font-weight:700;padding:10px 14px;border-radius:14px;box-shadow:0 4px 0 #0005;max-width:260px;line-height:1.2;transition:transform .15s;animation:drop .5s backwards;font-size:.98rem}
+.card:nth-child(2n){animation-delay:.07s}.card:nth-child(3n){animation-delay:.14s}
+@keyframes drop{from{transform:translateY(-30px) scale(.8);opacity:0}}
+.card:hover{transform:translateY(-3px)}
+.card.sel{background:var(--yel);transform:translateY(-6px) scale(1.06)}
+.card.bad{animation:shake .4s;background:var(--red)}
+@keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+
+/* modal */
+#modal{position:fixed;inset:0;background:#120e30dd;display:none;place-items:center;z-index:5;padding:16px}
+#modal.on{display:grid}
+.box{background:var(--card);color:var(--dark);border-radius:28px;padding:24px;max-width:460px;width:100%;text-align:center;animation:pop .5s cubic-bezier(.3,1.6,.5,1)}
+.box h2{font-size:1.9rem}.box .stars{font-size:2.4rem;color:#e0a800;letter-spacing:4px}
+.box p{margin:8px 0 14px;line-height:1.3}.box .tip{background:#ffd23f55;border-radius:14px;padding:10px;font-size:.95rem}
+.box .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+.box .split{margin:0}
+.conf{position:fixed;top:-20px;width:10px;height:14px;z-index:6;animation:fall linear forwards;pointer-events:none}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+@media(max-width:640px){.buckets{grid-template-columns:1fr}.bk{min-height:90px}.problem h3{font-size:1.2rem}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+<main>
+  <section id="home" class="screen on">
+    <h1>Pecah Masalah!</h1>
+    <div class="split"><i>🧩</i><i>🧩</i><i>🧩</i></div>
+    <p>Masalah besar terasa susah. Pecah jadi bagian kecil, dan semuanya jadi mudah. Itulah <b>dekomposisi</b>, salah satu jurus utama computational thinking.</p>
+    <button class="btn" id="start">Mulai main</button>
+  </section>
+
+  <section id="map" class="screen">
+    <div class="top"><h2>Pilih studi kasus</h2><button class="btn ghost" id="reset">Reset progres</button></div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section id="game" class="screen">
+    <div class="top"><button class="btn ghost" id="back">Peta</button><div class="hearts" id="hearts"></div></div>
+    <div class="problem"><span class="em" id="gEm"></span><div><small id="gNo"></small><h3 id="gTitle"></h3></div></div>
+    <p class="hint">Pilih kartu lalu ketuk bagiannya, atau seret kartu ke bagian yang tepat.</p>
+    <div class="buckets" id="buckets"></div>
+    <div class="pool" id="pool"></div>
+  </section>
+</main>
+<div id="modal"><div class="box" id="box"></div></div>
+<script src="game.js"></script>
+</body>
+</html>
