@@ -1,6 +1,6 @@
 // ===== 15 STUDI KASUS =====
 // b = nama 3 sub-masalah, c = kartu [teks, indeks sub-masalah yang benar], tip = pelajaran
-// Level 1-5 mudah (2 kartu/bagian), 6-10 sedang (3 kartu/bagian), 11-15 tantangan (game & aplikasi)
+// Level 1-5 mudah (2 kartu/bagian), 6-10 sedang (3 kartu/bagian), 11-15 tantangan (4 kartu/bagian), semua dari kehidupan sehari-hari
 const CASES = [
  {e:'🎒',t:'Berangkat ke sekolah',b:['Bersiap di rumah','Di perjalanan','Di sekolah'],
   c:[['Mandi dan sarapan',0],['Masukkan buku ke tas',0],['Naik angkot atau sepeda',1],['Menyeberang di zebra cross',1],['Memberi salam ke guru',2],['Duduk di bangku kelas',2]],
@@ -23,30 +23,30 @@ const CASES = [
  {e:'🎨',t:'Membuat poster kebersihan',b:['Cari ide','Menggambar','Menghias'],
   c:[['Tentukan pesan poster',0],['Tanya ide ke teman',0],['Lihat contoh poster',0],['Gambar sketsa dengan pensil',1],['Buat huruf judul besar',1],['Gambar tong sampah',1],['Warnai dengan spidol',2],['Tambah stiker bintang',2],['Beri garis tepi',2]],
   tip:'Karya besar dikerjakan bertahap: ide dulu, lalu bentuk, lalu hiasan.'},
- {e:'📚',t:'Presentasi kelompok',b:['Cari bahan','Buat slide','Presentasi'],
-  c:[['Baca buku di perpustakaan',0],['Catat hal penting',0],['Cari gambar yang cocok',0],['Tulis judul tiap slide',1],['Tempel gambar ke slide',1],['Cek huruf yang salah',1],['Latihan berbicara di depan cermin',2],['Bagi tugas bicara tiap anggota',2],['Jawab pertanyaan teman',2]],
-  tip:'Kerja kelompok lebih seru kalau tiap anggota memegang satu bagian.'},
- {e:'🐱',t:'Game kucing melompati kotak',b:['Kucing','Kotak','Skor'],
-  c:[['Kucing melompat saat layar disentuh',0],['Kucing jatuh lagi ke tanah',0],['Gambar kucing berlari',0],['Kotak muncul dari kanan',1],['Kotak bergerak ke kiri',1],['Kotak muncul di waktu acak',1],['Poin bertambah tiap lolos',2],['Tulis angka skor di layar',2],['Skor kembali 0 saat main lagi',2]],
-  tip:'Di game, tiap benda punya tugasnya sendiri. Kamu bisa membuatnya satu per satu.'},
- {e:'⚽',t:'Game tangkap bola',b:['Pemain','Bola','Nilai dan nyawa'],
-  c:[['Keranjang bergerak kiri dan kanan',0],['Keranjang mengikuti jari',0],['Gambar keranjang',0],['Bola jatuh dari atas',1],['Bola muncul di tempat acak',1],['Bola makin cepat',1],['Bola masuk keranjang: nilai +1',2],['Bola terlewat: nyawa berkurang',2],['Nyawa habis: permainan selesai',2]],
-  tip:'Tanya dirimu: siapa yang bergerak, apa yang jatuh, dan bagaimana menang atau kalah?'},
- {e:'🐦',t:'Game Flappy Bird',b:['Burung','Pipa','Skor'],
-  c:[['Burung jatuh karena gravitasi',0],['Burung naik saat layar diketuk',0],['Sayap burung mengepak',0],['Pipa muncul dengan celah acak',1],['Pipa bergeser ke kiri',1],['Burung kena pipa: kalah',1],['Tambah 1 poin tiap lewat pipa',2],['Tampilkan skor di atas',2],['Simpan skor tertinggi',2]],
-  tip:'Game terkenal pun dibuat dari bagian-bagian kecil yang sederhana.'},
- {e:'🧮',t:'Aplikasi kalkulator',b:['Input (masukan)','Proses','Output (hasil)'],
-  c:[['Tombol angka 0 sampai 9',0],['Tombol tambah dan kurang',0],['Layar menampung angka yang diketik',0],['Hitung penjumlahan',1],['Hitung perkalian',1],['Cek pembagian dengan nol',1],['Tampilkan hasil di layar',2],['Tombol C menghapus layar',2],['Tampilkan pesan error',2]],
-  tip:'Pola Input, Proses, Output bisa dipakai di hampir semua program.'},
- {e:'❌',t:'Game Tic-Tac-Toe',b:['Papan','Giliran','Cek pemenang'],
-  c:[['Gambar kotak 3×3',0],['Kosongkan papan saat mulai',0],['Gambar X dan O',0],['Pemain X dan O bergantian',1],['Kotak terisi tidak bisa diklik',1],['Tampilkan giliran siapa',1],['Cek 3 simbol sejajar',2],['Umumkan pemenang',2],['Tampilkan "Seri" jika penuh',2]],
-  tip:'Pisahkan tampilan (papan), alur (giliran), dan aturan (cara menang).'},
- {e:'🐍',t:'Game Ular',b:['Ular','Makanan','Game over'],
-  c:[['Ular bergerak sesuai tombol panah',0],['Badan ular makin panjang',0],['Ular terus berjalan sendiri',0],['Makanan muncul di tempat acak',1],['Ular makan: skor naik',1],['Makanan baru muncul setelah dimakan',1],['Ular menabrak tembok',2],['Ular menabrak badannya sendiri',2],['Tampilkan tombol main lagi',2]],
-  tip:'Cari tahu dulu: siapa pemainnya, apa yang dikejar, dan kapan permainan berakhir.'},
- {e:'🏰',t:'Game petualangan ala Roblox',b:['Karakter','Dunia','Misi dan hadiah'],
-  c:[['Karakter berjalan dan melompat',0],['Pilih baju karakter',0],['Karakter punya nyawa',0],['Buat pulau dan jembatan',1],['Tambah pohon dan gua',1],['Atur siang dan malam',1],['Cari 5 peti harta',2],['Dapat koin tiap misi selesai',2],['Naik level jika misi tuntas',2]],
-  tip:'Game besar dibuat tim: ada yang urus karakter, dunia, dan misi. Itulah dekomposisi!'}
+ {e:'🍜',t:'Memasak mi goreng',b:['Siapkan','Memasak','Menyajikan'],
+  c:[['Ambil mi dan bumbu',0],['Siapkan panci dan piring',0],['Isi panci dengan air',0],['Rebus mi sampai lunak',1],['Tiriskan airnya',1],['Aduk mi dengan bumbu',1],['Taruh mi di piring',2],['Tambah telur dan kerupuk',2],['Ambil sendok dan garpu',2]],
+  tip:'Memasak itu urutan: siapkan, masak, sajikan. Tiap bagian bisa dikerjakan satu per satu.'},
+ {e:'🧹',t:'Piket kelas',b:['Papan tulis','Lantai','Meja dan kursi'],
+  c:[['Hapus tulisan di papan',0],['Bersihkan penghapus',0],['Isi spidol atau kapur',0],['Sapu lantai',1],['Pel lantai yang kotor',1],['Buang sampah',1],['Rapikan susunan meja',2],['Dorong kursi ke meja',2],['Lap debu di meja',2]],
+  tip:'Satu tugas besar dibagi per area, jadi teman-teman bisa membantu bersama.'},
+ {e:'🐶',t:'Merawat hewan peliharaan',b:['Makan dan minum','Kebersihan','Bermain'],
+  c:[['Isi mangkuk makanan',0],['Ganti air minum',0],['Beri makan tepat waktu',0],['Mandikan hewan',1],['Bersihkan kandang',1],['Sisir bulunya',1],['Ajak jalan-jalan',2],['Lempar bola kecil',2],['Beri mainan baru',2]],
+  tip:'Merawat hewan itu banyak, tapi mudah kalau dipisah: makan, bersih, dan main.'},
+ {e:'🛍️',t:'Belanja ke pasar',b:['Sebelum berangkat','Di pasar','Sampai di rumah'],
+  c:[['Tulis daftar belanja',0],['Bawa uang dan tas',0],['Tanya ibu mau beli apa',0],['Cari sayur segar',1],['Tawar harga dengan sopan',1],['Bayar ke penjual',1],['Cuci sayuran',2],['Simpan telur di kulkas',2],['Beri tahu ibu uang kembalian',2],['Cek isi dompet',0],['Pilih buah yang matang',1],['Rapikan belanjaan di dapur',2]],
+  tip:'Mulai dari yang disiapkan, lalu yang dilakukan, lalu yang dibereskan.'},
+ {e:'🚂',t:'Liburan ke rumah nenek',b:['Persiapan','Perjalanan','Di rumah nenek'],
+  c:[['Kemas baju ke koper',0],['Beli oleh-oleh',0],['Pamit ke tetangga',0],['Naik kereta api',1],['Makan bekal di jalan',1],['Lihat pemandangan dari jendela',1],['Salim ke nenek',2],['Bantu nenek menyapu',2],['Bermain di kebun',2],['Cek tiket kereta',0],['Tidur sebentar di kereta',1],['Makan masakan nenek',2]],
+  tip:'Liburan juga bisa dipecah jadi tiga bagian: sebelum pergi, di jalan, dan sesudah sampai.'},
+ {e:'🏆',t:'Lomba 17 Agustus',b:['Persiapan','Lomba','Penutup'],
+  c:[['Pasang bendera merah putih',0],['Siapkan hadiah',0],['Bersihkan lapangan',0],['Balap karung',1],['Makan kerupuk',1],['Tarik tambang',1],['Bagi hadiah juara',2],['Foto bersama',2],['Kumpulkan sampah',2],['Pasang tali batas lomba',0],['Lomba lari estafet',1],['Umumkan nama para juara',2]],
+  tip:'Acara besar dibagi: sebelum acara, saat acara, dan setelah acara.'},
+ {e:'📖',t:'Mengerjakan PR',b:['Siapkan','Mengerjakan','Memeriksa'],
+  c:[['Catat PR di buku',0],['Ambil buku dan pensil',0],['Rapikan meja belajar',0],['Baca soal pelan-pelan',1],['Tulis jawaban',1],['Hitung dengan teliti',1],['Baca ulang jawaban',2],['Perbaiki tulisan yang salah',2],['Masukkan PR ke tas',2],['Siapkan penghapus',0],['Pakai kertas coretan',1],['Cek hitungan sekali lagi',2]],
+  tip:'PR yang banyak jadi ringan kalau dibagi: siapkan, kerjakan, lalu periksa.'},
+ {e:'🏕️',t:'Berkemah Pramuka',b:['Perlengkapan','Kegiatan','Beres-beres'],
+  c:[['Bawa tenda dan senter',0],['Bawa jaket dan selimut',0],['Bawa makanan dan minuman',0],['Api unggun dan lagu',1],['Jelajah alam',1],['Memasak bersama',1],['Bongkar tenda',2],['Bersihkan tempat kemah',2],['Hitung anggota sebelum pulang',2],['Bawa obat P3K',0],['Main permainan kelompok',1],['Bawa pulang semua barang',2]],
+  tip:'Hebat! Kamu sudah bisa memecah masalah besar jadi langkah kecil yang jelas.'}
 ];
 
 // ===== STATE =====
